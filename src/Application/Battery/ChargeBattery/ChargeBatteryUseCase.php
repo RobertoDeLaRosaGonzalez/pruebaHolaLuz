@@ -2,9 +2,9 @@
 
 namespace App\Application\Battery\ChargeBattery;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Domain\Entity\Battery;
 use App\Infrastructure\Service\BatteryHistoryService;
+use App\Application\Battery\ChargeBattery\ChargeBatteryRequest;
+
 
 class ChargeBatteryUseCase
 {

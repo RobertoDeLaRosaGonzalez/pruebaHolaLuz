@@ -7,10 +7,7 @@ use App\Application\Battery\GetBatteryHistory\GetBatteryHistoryUseCase;
 use App\Application\Battery\GetBatteryHistory\GetBatteryHistoryRequest;
 use App\Infrastructure\Service\BatteryHistoryService;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Domain\Entity\Battery;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**

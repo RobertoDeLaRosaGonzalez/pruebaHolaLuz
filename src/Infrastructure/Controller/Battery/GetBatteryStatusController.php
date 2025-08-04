@@ -6,10 +6,7 @@ use OpenApi\Annotations as OA;
 use App\Application\Battery\GetBatteryStatus\GetBatteryStatusRequest;
 use App\Application\Battery\GetBatteryStatus\GetBatteryStatusUseCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Domain\Entity\Battery;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Infrastructure\Service\BatteryHistoryService;
 
