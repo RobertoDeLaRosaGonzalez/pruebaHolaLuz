@@ -14,6 +14,7 @@ class DischargeBatteryRequest
     public static function create(
         float $amount
     ): self {
+        //meter logica de validacion de amount con exceptions
         return new self($amount);
     }
 
