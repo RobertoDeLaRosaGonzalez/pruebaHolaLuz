@@ -52,11 +52,12 @@ class ChargeBatteryController extends AbstractController
     #[Route('/battery/charge', name: 'app_battery_charge', methods: ['POST'])]
     public function chargeBattery(Request $request, BatteryHistoryService $batteryHistoryService): JsonResponse
     {
+        //TODO mover la logica de validacion de amount a ChargeBatteryRequest
         $data = json_decode($request->getContent(), true);
         $amount = (float)($data['amount']);
         $chargeBatteryRequest = ChargeBatteryRequest::create($amount);
         try {
-            $amount = $this->chargeBatteryUseCase->execute($chargeBatteryRequest, $batteryHistoryService);
+            $currentEnergy = $this->chargeBatteryUseCase->execute($chargeBatteryRequest, $batteryHistoryService);
         } catch (\InvalidArgumentException $e) {
             return new JsonResponse(['error' => $e->getMessage()], 400);
         }
@@ -64,7 +65,7 @@ class ChargeBatteryController extends AbstractController
         return new JsonResponse([
             'status' => 'success',
             'message' => 'Battery charged successfully',
-            'amount' => $amount
+            'currentEnergy' => $currentEnergy
         ]);
     }
 }

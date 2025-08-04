@@ -15,6 +15,7 @@ class DischargeBatteryUseCase
     public function execute(DischargeBatteryRequest $request, BatteryHistoryService $batteryHistoryService): float
     {
         if ($batteryHistoryService->getBatteryInstance()->isDischargeExceeded($request->getAmount())) {
+            //TODO crear excepcion personalizada
             throw new \InvalidArgumentException("Exceeds battery capacity");
         }
         return $batteryHistoryService->discharge($request->getAmount());
