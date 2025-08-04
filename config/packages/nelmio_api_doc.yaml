@@ -1,0 +1,10 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Solar battery Api
+            description: API para gestionar el estado de una batería solar.
+            version: 1.0.0
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/battery
+            - ^/api

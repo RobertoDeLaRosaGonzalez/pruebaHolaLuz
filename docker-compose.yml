@@ -1,0 +1,44 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: symfony-php
+    volumes:
+      - .:/appdata/www
+    working_dir: /appdata/www
+    expose:
+      - 9000
+    networks:
+      - symfony
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    container_name: symfony-nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/appdata/www/public
+    depends_on:
+      - php
+    networks:
+      - symfony
+  redis:
+    image: redis:7
+    container_name: symfony-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - symfony
+  
+volumes:
+  redis-data:
+
+networks:
+  symfony:
+    driver: bridge
